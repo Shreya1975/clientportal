@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { User, LayoutGrid, Users } from "lucide-react";
 
 const Header = () => {
   const tabClass = ({ isActive }) =>
@@ -8,42 +9,34 @@ const Header = () => {
         : "text-gray-500 hover:text-gray-700"
     }`;
 
+  const iconClass = "w-4 h-4";
+
   return (
     <header className="h-16 bg-white border-b flex items-center justify-between px-6">
+      
       {/* Center navigation */}
       <div className="flex items-center gap-10 mx-auto">
+
         {/* My Tickets */}
         <NavLink to="/dashboard" className={tabClass}>
-          <img
-            src="/User.png"
-            alt="My Tickets"
-            className="w-4 h-4 object-contain"
-          />
+          <User className={iconClass} />
           <span>My Tickets</span>
         </NavLink>
 
         {/* Company Tickets */}
         <NavLink to="/tickets" className={tabClass}>
-          <img
-            src="/layout.png"
-            alt="Company Tickets"
-            className="w-4 h-4 object-contain"
-          />
+          <LayoutGrid className={iconClass} />
           <span>Company Tickets</span>
         </NavLink>
 
         {/* Employee Management */}
         <NavLink to="/employees" className={tabClass}>
-          <img
-            src="/Users.png"
-            alt="Employee Management"
-            className="w-4 h-4 object-contain"
-          />
+          <Users className={iconClass} />
           <span>Employee Management</span>
         </NavLink>
       </div>
 
-      {/* Right profile */}
+      {/* Right profile (unchanged image) */}
       <div className="flex items-center gap-3">
         <div className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center">
           <img

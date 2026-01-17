@@ -1,4 +1,12 @@
 import { NavLink } from "react-router-dom";
+import {
+  LayoutDashboard,
+  Ticket,
+  Users,
+  BarChart3,
+  Settings,
+  LogOut,
+} from "lucide-react";
 
 const Sidebar = () => {
   const baseClass =
@@ -6,45 +14,55 @@ const Sidebar = () => {
 
   const navClass = ({ isActive }) =>
     isActive
-      ? `${baseClass} bg-gray-200`
-      : `${baseClass} hover:bg-gray-100`;
+      ? `${baseClass} bg-gray-200 text-indigo-600`
+      : `${baseClass} hover:bg-gray-100 text-gray-600`;
 
-  const imgClass = "w-12 h-10 object-contain";
+  const iconClass = "w-5 h-5";
 
   return (
     <aside className="w-16 bg-white border-r flex flex-col items-center py-6 justify-between">
+      
       {/* Top section */}
       <div className="flex flex-col items-center space-y-6">
-        
-        {/* Icon 1 - Dashboard */}
+        {/* Logo */}
+<div className="w-11 h-11 flex items-center justify-center mb-2">
+  <img
+    src="/Logo.png"   
+    alt="Logo"
+    className="w-8 h-8 object-contain"
+  />
+</div>
+
+
+        {/* Dashboard */}
         <NavLink to="/dashboard" className={navClass}>
-          <img src="/sb1.png" alt="Dashboard" className={imgClass} />
+          <LayoutDashboard className={iconClass} />
         </NavLink>
 
-        {/* Icon 2 - Tickets */}
+        {/* Tickets */}
         <NavLink to="/tickets" className={navClass}>
-          <img src="/sb2.png" alt="Tickets" className={imgClass} />
+          <Ticket className={iconClass} />
         </NavLink>
 
-        {/* Icon 3 - Employees */}
+        {/* Employees */}
         <NavLink to="/employees" className={navClass}>
-          <img src="/sb3.png" alt="Employees" className={imgClass} />
+          <Users className={iconClass} />
         </NavLink>
 
-        {/* Icon 4 */}
-        <div className={baseClass}>
-          <img src="/sb4.png" alt="Icon 4" className={imgClass} />
+        {/* Reports */}
+        <div className={`${baseClass} hover:bg-gray-100 text-gray-600 cursor-pointer`}>
+          <BarChart3 className={iconClass} />
         </div>
 
-        {/* Icon 5 */}
-        <div className={baseClass}>
-          <img src="/sb5.png" alt="Icon 5" className={imgClass} />
+        {/* Settings */}
+        <div className={`${baseClass} hover:bg-gray-100 text-gray-600 cursor-pointer`}>
+          <Settings className={iconClass} />
         </div>
       </div>
 
-      {/* Bottom icon - Icon 6 */}
-      <div className={baseClass}>
-        <img src="/sb6.png" alt="Logout" className={imgClass} />
+      {/* Logout */}
+      <div className={`${baseClass} hover:bg-red-50 text-red-500 cursor-pointer`}>
+        <LogOut className={iconClass} />
       </div>
     </aside>
   );

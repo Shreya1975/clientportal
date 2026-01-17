@@ -3,7 +3,7 @@ import Header from "../components/Header";
 
 const MainLayout = ({ children }) => {
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
 
       <div className="flex flex-col flex-1">
