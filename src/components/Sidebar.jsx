@@ -1,82 +1,53 @@
 import { NavLink } from "react-router-dom";
 
-const Header = () => {
-  const tabBase =
-    "flex items-center gap-2 text-sm font-medium pb-1 transition";
+const Sidebar = () => {
+  const baseClass =
+    "w-11 h-11 flex items-center justify-center rounded-lg transition";
 
-  const iconStyle = (isActive, icon) => ({
-    WebkitMask: `url(${icon}) no-repeat center`,
-    mask: `url(${icon}) no-repeat center`,
-    WebkitMaskSize: "contain",
-    maskSize: "contain",
-    backgroundColor: isActive ? "#4f46e5" : "#6b7280", // indigo / gray
-    width: "16px",
-    height: "16px",
-  });
+  const navClass = ({ isActive }) =>
+    isActive
+      ? `${baseClass} bg-gray-200`
+      : `${baseClass} hover:bg-gray-100`;
+
+  const imgClass = "w-12 h-10 object-contain";
 
   return (
-    <header className="h-16 bg-white border-b flex items-center justify-between px-6">
-      {/* Center navigation */}
-      <div className="flex items-center gap-10 mx-auto">
-        <NavLink to="/dashboard">
-          {({ isActive }) => (
-            <div
-              className={`${tabBase} ${
-                isActive
-                  ? "text-indigo-600 border-b-2 border-indigo-600"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
-            >
-              <span style={iconStyle(isActive, "/User.png")} />
-              My Tickets
-            </div>
-          )}
+    <aside className="w-16 bg-white border-r flex flex-col items-center py-6 justify-between">
+      {/* Top section */}
+      <div className="flex flex-col items-center space-y-6">
+        
+        {/* Icon 1 - Dashboard */}
+        <NavLink to="/dashboard" className={navClass}>
+          <img src="/sb1.png" alt="Dashboard" className={imgClass} />
         </NavLink>
 
-        <NavLink to="/tickets">
-          {({ isActive }) => (
-            <div
-              className={`${tabBase} ${
-                isActive
-                  ? "text-indigo-600 border-b-2 border-indigo-600"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
-            >
-              <span style={iconStyle(isActive, "/layout.png")} />
-              Company Tickets
-            </div>
-          )}
+        {/* Icon 2 - Tickets */}
+        <NavLink to="/tickets" className={navClass}>
+          <img src="/sb2.png" alt="Tickets" className={imgClass} />
         </NavLink>
 
-        <NavLink to="/employees">
-          {({ isActive }) => (
-            <div
-              className={`${tabBase} ${
-                isActive
-                  ? "text-indigo-600 border-b-2 border-indigo-600"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
-            >
-              <span style={iconStyle(isActive, "/Users.png")} />
-              Employee Management
-            </div>
-          )}
+        {/* Icon 3 - Employees */}
+        <NavLink to="/employees" className={navClass}>
+          <img src="/sb3.png" alt="Employees" className={imgClass} />
         </NavLink>
+
+        {/* Icon 4 */}
+        <div className={baseClass}>
+          <img src="/sb4.png" alt="Icon 4" className={imgClass} />
+        </div>
+
+        {/* Icon 5 */}
+        <div className={baseClass}>
+          <img src="/sb5.png" alt="Icon 5" className={imgClass} />
+        </div>
       </div>
 
-      {/* Right profile */}
-      <div className="flex items-center gap-3">
-        <img
-          src="/Avatar.png"
-          alt="Profile"
-          className="w-9 h-9 rounded-full object-cover"
-        />
-        <span className="text-sm text-gray-700 font-medium">
-          Client Admin Bob
-        </span>
+      {/* Bottom icon - Icon 6 */}
+      <div className={baseClass}>
+        <img src="/sb6.png" alt="Logout" className={imgClass} />
       </div>
-    </header>
+    </aside>
   );
 };
 
-export default Header;
+export default Sidebar;
